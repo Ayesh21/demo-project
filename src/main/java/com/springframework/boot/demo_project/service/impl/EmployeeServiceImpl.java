@@ -2,14 +2,13 @@ package com.springframework.boot.demo_project.service.impl;
 
 import com.springframework.boot.demo_project.component.EmployeeTransformer;
 import com.springframework.boot.demo_project.dto.Employee;
-import com.springframework.boot.demo_project.entity.EmployeeEntity;
 import com.springframework.boot.demo_project.repository.EmployeeRepository;
 import com.springframework.boot.demo_project.service.EmployeeService;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class EmployeeServiceImpl implements EmployeeService {
@@ -35,11 +34,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Employee updateEmployee(Employee updatedEmployee, Long id) {
         return employeeTransformer.employeeEntityToEmployeeDto(
                 employeeRepository.findById(id)
-                .map(employee ->{
-                    updatedEmployee.setName(employee.getName());
-                    updatedEmployee.setEmpNumber(employee.getEmpNumber());
-                    return employeeRepository.save(employee);
-                }).orElseGet(() -> employeeRepository.save(employeeTransformer.employeeDtoToEmployeeEntity(updatedEmployee))));
+                        .map(employee -> {
+                            employee.setName(updatedEmployee.getName());
+                            employee.setEmpNumber(updatedEmployee.getEmpNumber());
+                            return employeeRepository.save(employee);
+                        }).orElseGet(() -> employeeRepository.save(employeeTransformer.employeeDtoToEmployeeEntity(updatedEmployee))));
     }
 
     @Override

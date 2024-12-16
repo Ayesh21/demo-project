@@ -15,6 +15,7 @@ public class EmployeeTransformer {
             return null;
         }
         return Employee.builder()
+                .id(entity.getId())
                 .name(entity.getName())
                 .empNumber(entity.getEmpNumber())
                 .build();
@@ -34,7 +35,7 @@ public class EmployeeTransformer {
         if(entities == null || entities.isEmpty()){
             return List.of();
         }
-        return entities.stream().map(this :: employeeEntityToEmployeeDto).collect(Collectors.toList());
+        return entities.stream().map(this :: employeeEntityToEmployeeDto).toList();
     }
 }
 
