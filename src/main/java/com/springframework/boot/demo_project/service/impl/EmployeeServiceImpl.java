@@ -21,12 +21,12 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Employee getEmployee(Long id) {
+    public Employee getEmployeeById(Long id) {
         return employeeTransformer.employeeEntityToEmployeeDto(employeeRepository.findById(id).orElseThrow(() -> new RuntimeException("Employee not found with ID: " + id)));
     }
 
     @Override
-    public List<Employee> getEmployees() {
+    public List<Employee> getEmployee() {
         return employeeTransformer.employeeEntityListToEmployeeDtoList(employeeRepository.findAll());
     }
 

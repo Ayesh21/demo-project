@@ -5,7 +5,6 @@ import com.springframework.boot.demo_project.entity.EmployeeEntity;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Component
 public class EmployeeTransformer {
@@ -18,6 +17,7 @@ public class EmployeeTransformer {
                 .id(entity.getId())
                 .name(entity.getName())
                 .empNumber(entity.getEmpNumber())
+                .empType(entity.getEmpType())
                 .build();
     }
 
@@ -28,6 +28,7 @@ public class EmployeeTransformer {
         EmployeeEntity entity = new EmployeeEntity();
         entity.setName(dto.getName());
         entity.setEmpNumber(dto.getEmpNumber());
+        entity.setEmpType(dto.getEmpType());
         return entity;
     }
 

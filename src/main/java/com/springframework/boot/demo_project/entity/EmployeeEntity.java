@@ -27,4 +27,6 @@ public class EmployeeEntity implements Serializable {
     private String name;
     @Column(name="emp_number", length=20)
     private String empNumber;
+    @Column(name="emp_type", length=20)
+    private String empType;
 }

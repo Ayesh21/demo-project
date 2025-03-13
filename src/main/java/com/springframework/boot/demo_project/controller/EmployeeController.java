@@ -18,24 +18,24 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/employee")
+@RequestMapping("api/employees")
 @RequiredArgsConstructor
 public class EmployeeController {
 
     private final EmployeeService employeeService;
 
     @PostMapping
-    public ResponseEntity<Employee> createEmployee(@Validated @RequestBody Employee employee) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(employeeService.createEmployee(employee));
+    public Employee createEmployee(@Validated @RequestBody Employee employee) {
+        return employeeService.createEmployee(employee);
     }
     @GetMapping
-    public ResponseEntity<List<Employee>> getEmployees(){
-        return ResponseEntity.status(HttpStatus.OK).body(employeeService.getEmployees());
+    public List<Employee> getEmployee(){
+        return employeeService.getEmployee();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Employee> getEmployee(@PathVariable(value = "id") Long id){
-        return ResponseEntity.status(HttpStatus.OK).body(employeeService.getEmployee(id));
+    public ResponseEntity<Employee> getEmployeeById(@PathVariable(value = "id") Long id){
+        return ResponseEntity.status(HttpStatus.OK).body(employeeService.getEmployeeById(id));
     }
 
     @DeleteMapping("/{id}")
