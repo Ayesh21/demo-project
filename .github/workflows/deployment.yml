@@ -3,7 +3,7 @@ name: Java Maven CI/CD
 on:
   push:
     branches:
-      - develop
+      - development
       - master
 
 
